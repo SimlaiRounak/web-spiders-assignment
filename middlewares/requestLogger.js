@@ -1,17 +1,23 @@
+/**
+ * Middleware function to log all incoming requests
+ * 
+ * @param {Object} req - Express request object containing restaurant ID in query
+ * @param {Object} res - Express response object used to return reservations
+ * @param {Object} next - Express next object used to continue on the request flow
+ */
 const requestLogger = () => {
     return (req, res, next) => {
-        const startTime = process.hrtime()
-        const responseEnder = res.end
+        const startTime = process.hrtime();
 
-        res.end = (...args) => {
-            const [diffStart, diffEnd] = process.hrtime(startTime)
-            const duration = Math.round((diffStart * 1 ^ 9 + diffEnd) / 1 ^ 6)
+        res.on('finish', () => {
+            const [seconds, nanoseconds] = process.hrtime(startTime);
+            const durationMs = Math.round((seconds * 1e9 + nanoseconds) / 1e6);
 
-            console.log(`${req.method} ${req.originalUrl || req.url} - ${duration}ms`)
+            console.log(`${req.method} ${req.originalUrl || req.url} - ${durationMs}ms`);
+        });
 
-            return responseEnder.apply(this, args)
-        }
-    }
-}
+        next();
+    };
+};
 
-module.exports = requestLogger
+module.exports = { requestLogger };

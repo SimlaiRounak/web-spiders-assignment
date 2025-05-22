@@ -1,6 +1,12 @@
 const { Restaurant } = require('../models')
 
-
+/**
+ * Controller function to fetch the menu of a restaurant by ID
+ * 
+ * @param {Object} req - Express request object containing restaurant ID in params
+ * @param {Object} res - Express response object used to return restaurant menu
+ * @returns {JSON} Restaurant name and menu array or appropriate error message
+ */
 const getMenu = async (req, res) => {
     try {
 
@@ -25,6 +31,14 @@ const getMenu = async (req, res) => {
         })
     }
 }
+
+/**
+ * Controller function to fetch the menu categories of a restaurant by ID
+ * 
+ * @param {Object} req - Express request object containing restaurant ID in params
+ * @param {Object} res - Express response object used to return restaurant menu categories
+ * @returns {JSON} Restaurant menu categories array or appropriate error message
+ */
 
 const getMenuCategories = async (req, res) => {
     try {

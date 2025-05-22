@@ -1,5 +1,13 @@
 const { Restaurant } = require('../models');
 
+/**
+ * Controller function to fetch the list of restaurants
+ * 
+ * @param {Object} req - Express request object containing various filters in query
+ * @param {Object} res - Express response object used to return reservations
+ * @returns {JSON} Restaurant reservations array or appropriate error message
+ */
+
 const searchRestaurants = async (req, res, next) => {
     try {
         // Extract query parameters with defaults
@@ -52,6 +60,14 @@ const searchRestaurants = async (req, res, next) => {
         next(error);
     }
 };
+
+/**
+ * Controller function to fetch the details of a restaurant by ID
+ * 
+ * @param {Object} req - Express request object containing restaurant ID in path
+ * @param {Object} res - Express response object used to return restaurant details
+ * @returns {JSON} Restaurant details object or appropriate error message
+ */
 
 const getRestaurantById = async (req, res) => {
     try {

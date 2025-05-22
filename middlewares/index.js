@@ -1,4 +1,4 @@
-const requestLogger = require('./requestLogger')
+const { requestLogger } = require('./requestLogger')
 
 module.exports = {
     requestLogger

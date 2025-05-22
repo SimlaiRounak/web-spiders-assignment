@@ -1,6 +1,14 @@
 const { Restaurant, Reservation } = require("../models");
 const { calculateEndTime, isValidISODate } = require('../utils/timeUtils');
 
+/**
+ * Controller function to fetch the reservations of a restaurant by ID
+ * 
+ * @param {Object} req - Express request object containing restaurant ID in query
+ * @param {Object} res - Express response object used to return reservations
+ * @returns {JSON} Restaurant reservations array or appropriate error message
+ */
+
 const getReservation = async (req, res) => {
     try {
         const { restaurantId, date } = req.query
@@ -32,6 +40,14 @@ const getReservation = async (req, res) => {
         })
     }
 }
+
+/**
+ * Controller function to create a reservation of a restaurant
+ * 
+ * @param {Object} req - Express request object containing details of reservation in body
+ * @param {Object} res - Express response object used to return confirmation or failure due to conflict of reservation
+ * @returns {JSON} Confirmation / Failure due to conflict of reservation, or appropriate error message
+ */
 
 const addReservation = async (req, res) => {
     try {
