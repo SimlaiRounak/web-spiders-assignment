@@ -1,3 +1,21 @@
+/**
+ * @file indexRoutes.js
+ * @description Main API router that provides a welcome message and mounts restaurant and reservation routes.
+ *
+ * @route GET /
+ * @description Welcome message and overview of available endpoints.
+ * @access Public
+ *
+ * @route /restaurants
+ * @description Routes for restaurant-related operations.
+ * @access Public
+ * @router restaurantRouter
+ *
+ * @route /reservations
+ * @description Routes for reservation-related operations.
+ * @access Public
+ * @router reservationRouter
+ */
 const express = require('express')
 const restaurantRouter = require('./restaurantRoutes')
 const reservationRouter = require('./reservationRoutes')
